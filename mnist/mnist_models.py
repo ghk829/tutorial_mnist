@@ -54,7 +54,8 @@ class MyModel(models.BaseModel):
       A dictionary with a tensor containing the probability predictions of the
       model in the 'predictions' key. The dimensions of the tensor are
       batch_size x num_classes."""
-    net = slim.conv2d(model_input, 20, [5, 5], padding='SAME', scope='layer1-conv')
+    net = slim.flatten(model_input)
+    net = slim.conv2d(net, 20, [5, 5], padding='SAME', scope='layer1-conv')
     net = slim.max_pool2d(net, 2, stride=2, scope='layer2-max-pool')
 
     output = slim.fully_connected(
