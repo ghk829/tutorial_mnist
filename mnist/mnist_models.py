@@ -55,9 +55,6 @@ class MyModel(models.BaseModel):
       model in the 'predictions' key. The dimensions of the tensor are
       batch_size x num_classes."""
     net = slim.flatten(model_input)
-    net = slim.conv2d(net, 20, [5, 5], padding='SAME', scope='layer1-conv')
-    net = slim.max_pool2d(net, 2, stride=2, scope='layer2-max-pool')
-
     output = slim.fully_connected(
         net, num_classes, activation_fn=tf.nn.softmax,
         weights_regularizer=slim.l2_regularizer(l2_penalty))
