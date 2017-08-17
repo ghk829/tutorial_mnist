@@ -79,7 +79,7 @@ class MyModel(models.BaseModel):
       A dictionary with a tensor containing the probability predictions of the
       model in the 'predictions' key. The dimensions of the tensor are
       batch_size x num_classes."""
-    net = self.nielsen_net(model_input,True)
+    net = self.nielsen_net(model_input,True, scope='NielsenNetTrain')
     output = slim.fully_connected(
         net, num_classes, activation_fn=tf.nn.softmax,
         weights_regularizer=slim.l2_regularizer(l2_penalty))
