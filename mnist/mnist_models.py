@@ -80,7 +80,4 @@ class MyModel(models.BaseModel):
       model in the 'predictions' key. The dimensions of the tensor are
       batch_size x num_classes."""
     net = self.nielsen_net(model_input,True)
-    output = slim.fully_connected(
-        net, num_classes, activation_fn=tf.nn.softmax,
-        weights_regularizer=slim.l2_regularizer(l2_penalty))
     return {"predictions": net}
