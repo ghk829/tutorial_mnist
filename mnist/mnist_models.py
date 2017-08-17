@@ -83,4 +83,4 @@ class MyModel(models.BaseModel):
     output = slim.fully_connected(
         net, num_classes, activation_fn=tf.nn.softmax,
         weights_regularizer=slim.l2_regularizer(l2_penalty))
-    return {"predictions": output}
+    return {"predictions": net}
