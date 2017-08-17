@@ -43,7 +43,7 @@ class LogisticModel(models.BaseModel):
 class MyModel(models.BaseModel):
   """Logistic model with L2 regularization."""
   def nielsen_net(inputs, is_training, scope='NielsenNet'):
-    with tf.variable_scope(scope, 'NielsenNet'):
+    with tf.variable_scope('NielsenNet'):
         # First Group: Convolution + Pooling 28x28x1 => 28x28x20 => 14x14x20
         net = slim.conv2d(inputs, 20, [5, 5], padding='SAME', scope='layer1-conv')
         net = slim.max_pool2d(net, 2, stride=2, scope='layer2-max-pool')
